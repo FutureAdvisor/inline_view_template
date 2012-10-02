@@ -1,0 +1,84 @@
+= InlineViewTemplate
+
+Inline view templates are used to define reusable markup without defining a
+separate partial view template. They can be used to define inline partials or
+even inline layout templates.
+
+Inline view templates are useful when there are sections of markup that are
+shared among several sections within a view template, yet may not be
+substantial enough to merit their own partial view template.
+
+In addition, inline view templates can be treated as objects that can be passed
+around to other view templates (whether inline or regular) for rendering within
+those templates.
+
+If a content block is specified when calling +#render+, it will be passed
+through as an inline view template in the last parameter to the content block
+with which the inline view template was initialized. In effect, the inline view
+view template can serve as an inline layout template for the content specified
+to +#render+.
+
+== Examples
+
+=== Serving as a partial template
+
+==== Using ERb
+
+  <% table_row_template = InlineViewTemplate.new do |attr, value| %>
+    <tr>
+      <th><%= attr %></th>
+      <td><%= value %></td>
+    </tr>
+  <% end %>
+
+  <table><tbody>
+    <% @user.attributes.each do |attr, value| %>
+      <%= table_row_template.render(attr, value) %>
+    <% end %>
+  </tbody></table>
+
+==== Using HAML
+
+  - table_row_template = InlineViewTemplate.new do |attr, value|
+    %tr
+      %th= attr
+      %td= value
+
+  %table
+    %tbody
+      - @user.attributes.each do |attr, value|
+        = table_row_template.render(attr, value)
+
+=== Serving as a layout template
+
+==== Using ERb
+
+  <% form_layout = InlineViewTemplate.new do |user, form_fields| %>
+    <% form_for user do |form| %>
+      <%= form_fields.render(form) %>
+      <%= form.submit %>
+    <% end %>
+  <% end %>
+
+  <%= form_layout.render(@user) do |form| %>
+    <p>Name: <%= form.text_field :name %></p>
+    <p>Address: <%= form.text_field :address %></p>
+  <% end %>
+
+==== Using HAML
+
+  - form_layout = InlineViewTemplate.new do |user, form_fields|
+    - form_for user do |form|
+      = form_fields.render(form)
+      = form.submit
+
+  = form_layout.render(@user) do |form|
+    %p
+      Name:
+      = form.text_field :name
+    %p
+      Address:
+      = form.text_field :address
+
+Author::  Clyde Law (mailto:claw@alum.mit.edu)
+License:: Released under the MIT license
