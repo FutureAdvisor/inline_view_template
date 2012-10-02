@@ -18,6 +18,11 @@ with which the inline view template was initialized. In effect, the inline view
 view template can serve as an inline layout template for the content specified
 to +#render+.
 
+== Installation
+
+Add the +inline_view_template+ gem to your project. If you use bundler, this
+is done by adding an entry in your project's +Gemfile+.
+
 == Examples
 
 === Serving as a partial template
