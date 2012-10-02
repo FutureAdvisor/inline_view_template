@@ -1,8 +1,8 @@
 = InlineViewTemplate
 
-Inline view templates are used to define reusable markup without defining a
-separate partial view template. They can be used to define inline partials or
-even inline layout templates.
+Inline view templates are used to define reusable markup in Rails without
+defining a separate partial view template. They can be used to define inline
+partials or even inline layout templates.
 
 Inline view templates are useful when there are sections of markup that are
 shared among several sections within a view template, yet may not be
