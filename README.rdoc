@@ -85,5 +85,5 @@ is done by adding an entry in your project's +Gemfile+.
       Address:
       = form.text_field :address
 
-Author::  Clyde Law (mailto:claw@alum.mit.edu)
+Author::  FutureAdvisor
 License:: Released under the MIT license

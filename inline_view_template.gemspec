@@ -5,9 +5,9 @@ require "inline_view_template/version"
 Gem::Specification.new do |s|
   s.name        = "inline_view_template"
   s.version     = InlineViewTemplate::VERSION
-  s.authors     = ["Clyde Law"]
-  s.email       = ["claw@alum.mit.edu"]
-  s.homepage    = %q{http://github.com/Umofomia/inline_view_template}
+  s.authors     = ["FutureAdvisor"]
+  s.email       = ["core.platform@futureadvisor.com"]
+  s.homepage    = %q{http://github.com/FutureAdvisor/inline_view_template}
   s.summary     = %q{Inline view templates are used to define reusable markup in Rails without defining a separate partial view template.}
   s.description = %q{Inline view templates are used to define reusable markup in Rails without defining a separate partial view template. They can be used to define inline partials or even inline layout templates.}
   s.license     = 'MIT'
